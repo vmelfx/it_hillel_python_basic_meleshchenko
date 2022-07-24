@@ -4,8 +4,8 @@
 # Результат: (1, 2)
 
 input_tuple: tuple = (1, 2, 3)
-# кортеж -- это не изменяемый тип данных.
-# удалить из него элемент не возможно.
-# Можно только переопределить кортеж без выбранного элемента
+# tuple is an immutable data type
+# it is impossible to remove element from the tuple
+# we can only re-declare tuple without selected element
 input_tuple: tuple = (1, 2)
 print(input_tuple)

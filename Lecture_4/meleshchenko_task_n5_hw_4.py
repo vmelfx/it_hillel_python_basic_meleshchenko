@@ -4,8 +4,9 @@
 # Входные данные: red, white, black, red, green, black
 # Результат: black, green, red, white
 
-# цикл проходит по всем элементам и отбирает уникальные в другой список.
-# после этого стандартным методом их сортируем и выводим.
+# The loop goes through all the elements and selects the unique ones
+# into another list
+# after that, we sort them by standard method and print them
 
 input_data: list = ["red", "white", "black", "red", "green", "black"]
 processed_data: list = []

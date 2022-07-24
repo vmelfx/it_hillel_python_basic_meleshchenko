@@ -13,13 +13,14 @@ user_decisions: list = ["1) Сделать запись",
                         "0) Программа завершает работу"]
 
 
-# Весь блок отвечающий за вывод таблицы помещен в функцию,
-# чтобы при необходимости вызова не приходилось копировать/вставлять
-# большие куски кода
+# The entire block responsible for displaying the table
+# is placed in a function
+# so you don't have to copy/paste big chunks of code if you need to call it
+
 def grid_print():
     count_for_y: int = 4
     print("Y")
-    for i in grid[-1::-1]:  # итерирование изменено, чтобы совпадали значения по осям.
+    for i in grid[-1::-1]:  # iteration changed to match axis values
         print("  +---+---+---+---+---+")
         print(count_for_y, *i, sep=" | ", end=" |\n")
         count_for_y -= 1
@@ -27,18 +28,18 @@ def grid_print():
     print("    0   1   2   3   4   ")
 
 
-# Это функция, отвечающая за вывод вариантов пользовательских решений
+# This is the function responsible for displaying user's decisions
 def user_decisions_print():
     for for_printing in user_decisions:
         print(for_printing)
 
 
-# печатаем сетку
+# print grid
 grid_print()
-# объявляем переменную, чтобы цикл сразу мог с ней работать
+# declare a variable so that, the loop can immediately work with it
 user_decision: str = ""
-# этим циклом мы обеспечиваем работу программы,
-# пока пользователь не захочет с нее выйти
+# with this cycle we ensure the operation of the program, until the user wants
+# to log out
 while user_decision != "0":
     user_decisions_print()
     user_decision: str = input("Пожалуйста, выбери действие: ")
@@ -55,6 +56,7 @@ while user_decision != "0":
             override_decision: str = input("Пожалуйста, сделай свой выбор: ")
             if override_decision == "1":
                 grid[x][y] = value
+                print("Запись сделана!")
             else:
                 continue
     elif user_decision == "2":
@@ -71,6 +73,10 @@ while user_decision != "0":
         print("Введите x и y в формате x=2;y=2;")
         x: int = int(input("x= "))
         y: int = int(input("y= "))
-        grid[x][y] = " "
-        print("Запись удалена!")
-
+        if grid[x][y] == " ":
+            print("Эта ячейка уже пустая!")
+        else:
+            grid[x][y] = " "
+            print("Запись удалена!")
+    else:
+        print("Please, choose one of decisions below:")
